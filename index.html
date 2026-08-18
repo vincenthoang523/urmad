@@ -118,10 +118,138 @@
 
 </main>
 
+<!-- ===================================================================
+     SERVER INDEX
+     To add an entry: copy the block between the TEMPLATE markers below,
+     paste it anywhere inside <div class="server-list"> and fill in the
+     4 CAPS placeholders. Search and the counter pick it up automatically.
+
+     TEMPLATE ↓ ----------------------------------------------------------
+     <div class="server" data-status="up">
+       <div class="s-alias">
+         <b>ALIAS</b>
+         <a href="ROBLOX_PROFILE_URL" target="_blank" rel="noopener">@ROBLOX_USERNAME</a>
+       </div>
+       <a class="s-link" href="PRIVATE_SERVER_LINK" target="_blank" rel="noopener">join server</a>
+       <span class="s-status"></span>
+     </div>
+     TEMPLATE ↑ ----------------------------------------------------------
+
+     data-status="up"   → green "working"
+     data-status="down" → red "dead"
+     (leave it off and it shows a grey "unknown")
+     =================================================================== -->
+<section class="servers-section">
+
+  <div class="servers-head">
+    <h2>jailbreak private servers</h2>
+    <span class="count" id="server-count"></span>
+  </div>
+
+  <div class="search">
+    <span class="search-ico" aria-hidden="true">⌕</span>
+    <input id="server-search" type="search" autocomplete="off" spellcheck="false"
+           placeholder="search alias, @user or status…" aria-label="Search private servers">
+  </div>
+
+  <div class="list-labels" aria-hidden="true">
+    <span>owner</span>
+    <span>server</span>
+    <span>status</span>
+  </div>
+
+  <div class="server-list" id="server-list">
+
+    <div class="server" data-status="up">
+      <div class="s-alias">
+        <b>ADBIWARE</b>
+        <a href="https://www.roblox.com/users/252498395/profile" target="_blank" rel="noopener">@N4N1TES</a>
+      </div>
+      <a class="s-link" href="#" target="_blank" rel="noopener">join server</a>
+      <span class="s-status"></span>
+    </div>
+
+    <div class="server" data-status="up">
+      <div class="s-alias">
+        <b>diamonds</b>
+        <a href="https://www.roblox.com/users/213438244/profile" target="_blank" rel="noopener">@RRRVTXDRSVPXRSTVRRRR</a>
+      </div>
+      <a class="s-link" href="#" target="_blank" rel="noopener">join server</a>
+      <span class="s-status"></span>
+    </div>
+
+    <div class="server" data-status="down">
+      <div class="s-alias">
+        <b>deven</b>
+        <a href="#" target="_blank" rel="noopener">@USERNAME</a>
+      </div>
+      <a class="s-link" href="#" target="_blank" rel="noopener">join server</a>
+      <span class="s-status"></span>
+    </div>
+
+  </div>
+
+  <p class="no-results" id="no-results">no servers match that search.</p>
+
+</section>
+
 <footer class="page-foot">
   <p>urmad.lol</p>
   <p class="tiny">https://rape.fish</p>
 </footer>
 
+<script>
+/* ---- server index: live search + counter ---------------------------- */
+(function () {
+  var input = document.getElementById('server-search');
+  var list  = document.getElementById('server-list');
+  var empty = document.getElementById('no-results');
+  var count = document.getElementById('server-count');
+  if (!input || !list) return;
+
+  /* extra words each status should also answer to when searched */
+  var STATUS_WORDS = {
+    up:   'working up online yes alive',
+    down: 'dead down offline no broken'
+  };
+
+  function haystack(row) {
+    var link = row.querySelector('.s-link');
+    return (
+      row.textContent + ' ' +
+      (link ? link.getAttribute('href') : '') + ' ' +
+      (STATUS_WORDS[row.dataset.status] || 'unknown')
+    ).toLowerCase();
+  }
+
+  function filter() {
+    var terms = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    var rows  = list.querySelectorAll('.server');   /* re-queried every time, so
+                                                       pasted-in rows just work */
+    var shown = 0;
+
+    for (var i = 0; i < rows.length; i++) {
+      var hay = haystack(rows[i]);
+      var match = terms.every(function (t) { return hay.indexOf(t) !== -1; });
+      rows[i].classList.toggle('is-hidden', !match);
+      if (match) shown++;
+    }
+
+    empty.classList.toggle('show', shown === 0);
+    count.textContent = shown + (shown === 1 ? ' server' : ' servers') +
+                        (terms.length ? ' found' : '');
+  }
+
+  input.addEventListener('input', filter);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { input.value = ''; filter(); }
+  });
+
+  /* keeps the count honest if rows are ever added after load */
+  new MutationObserver(filter).observe(list, { childList: true });
+
+  filter();
+})();
+</script>
 </body>
 </html>
