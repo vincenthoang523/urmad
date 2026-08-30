@@ -15,7 +15,7 @@ const CONFIG = {
   //   • drop an image next to this file and put its filename here  ->  'me.jpg'
   //   • or paste a direct image link                               ->  'https://…/pic.png'
   //   • leave as null for the built-in placeholder
-  pfp: abdiware.webp,
+  pfp: 'abdiware.webp',
 
   // Red accent used across the page. Try '#8b0000', '#e01e37', '#a4161a', '#6a040f'.
   accent: '#c1121f'
