@@ -1,227 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>urmad.lol</title>
-<meta name="description" content="jailbreak ps link directory">
-<meta property="og:image" content="https://static2.klipy.com/ii/4493325008d34b7bf8cd6813cd5c1619/9e/4d/HrboKOvw7jy8TW1yfL.gif">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>e-bio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="bg-glow" aria-hidden="true"></div>
+  <canvas id="embers"></canvas>
+  <div class="vignette"></div>
+  <div class="scanlines"></div>
 
-<header class="page-head">
-  <h1>urmad.lol</h1>
-  <p>elite jailbreak freemason society</p>
-</header>
-
-<main class="profiles">
-
-  <article class="card">
-    <div class="avatar">
-      <img src="assets/IMG_4681.webp" alt="final rookie">
+  <!-- Enter gate -->
+  <div id="gate">
+    <div class="gate-inner">
+      <div class="gate-title">click to enter</div>
     </div>
-
-    <h2 class="username">MistyGemCoon</h2>
-    <p class="bio">
-      how fashion mfs pull up to their grandmas funeral late on purpose (aurafarm) after going full balenci on the fit
-    </p>
-
-    <nav class="socials">
-      <a class="social" href="#">
-        <span class="ico">◆</span>
-        <span class="txt"><b>discord</b><i>@tsukiruu</i></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="social" href="https://www.t.me/tsukiruu">
-        <span class="ico">◇</span>
-        <span class="txt"><b>telegram</b><i>@tsukiruu</i></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="social" href="https://www.tiktok.com/@sleepycatx_v">
-        <span class="ico">●</span>
-        <span class="txt"><b>tiktok</b><i>@sleepycatx_v</i></span>
-        <span class="arrow">→</span>
-      </a>
-    </nav>
-  </article>
-
-  <article class="card">
-    <div class="avatar">
-      <img src="assets/abdiware.webp" alt="di gimpy yute">
-    </div>
-
-    <h2 class="username">diamonds</h2>
-
-    <p class="bio">
-      "So kinzer was addicted to last stomps, on october, he performed the final satanic ritual to free his soul, thus slowly dissipating as jailbreak went on." - Juju2drxppy
-    </p>
-
-    <nav class="socials">
-      <a class="social" href="#">
-        <span class="ico">◆</span>
-        <span class="txt"><b>discord</b><i>@snookering</i></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="social" href="#">
-        <span class="ico">▲</span>
-        <span class="txt"><b>discord</b><i>@79p6</i></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="social" href="https://www.roblox.com/users/213438244/profile">
-        <span class="ico">■</span>
-        <span class="txt"><b>roblox</b><i>@RRRVTXDRSVPXRSTVRRRR</i></span>
-        <span class="arrow">→</span>
-      </a>
-    </nav>
-  </article>
-
-  <article class="card">
-    <div class="avatar">
-      <img src="assets/DEVENWARE.webp" alt="devenGemCock">
-    </div>
-
-    <h2 class="username">deven</h2>
-
-    <p class="bio">
-      when life gives you lemons you send the picture of nova's face in jbr chat
-    </p>
-
-    <nav class="socials">
-      <a class="social" href="https://www.tiktok.com/@x_x_xx_x_x_x">
-        <span class="ico">◆</span>
-        <span class="txt"><b>tiktok</b><i>@x_x_xx_x_x_x</i></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="social" href="#">
-        <span class="ico">◇</span>
-        <span class="txt"><b>discord</b><i>@dxvs</i></span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="social" href="https://instagram.com/lovensings">
-        <span class="ico">◈</span>
-        <span class="txt"><b>instagram</b><i>@lovensings</i></span>
-        <span class="arrow">→</span>
-      </a>
-    </nav>
-  </article>
-
-</main>
-
-<section class="servers-section">
-
-  <div class="servers-head">
-    <h2>jailbreak private servers</h2>
-    <span class="count" id="server-count"></span>
   </div>
 
-  <div class="search">
-    <span class="search-ico" aria-hidden="true">⌕</span>
-    <input id="server-search" type="search" autocomplete="off" spellcheck="false"
-           placeholder="search alias, @user or status…" aria-label="Search private servers">
-  </div>
+  <main id="stage">
+    <section class="card">
+      <div class="card-glow"></div>
 
-  <div class="list-labels" aria-hidden="true">
-    <span>owner</span>
-    <span>server</span>
-    <span>status</span>
-  </div>
-
-  <div class="server-list" id="server-list">
-
-    <div class="server" data-status="up">
-      <div class="s-alias">
-        <b>diamonds</b>
-        <a href="https://www.roblox.com/users/213438244/profile" target="_blank" rel="noopener">@RRRVTXDRSVPXRSTVRRRR</a>
+      <div class="pfp-wrap">
+        <div class="pfp-ring"></div>
+        <img id="pfp" src="" alt="profile picture" />
       </div>
-      <a class="s-link" href="https://www.roblox.com/share?code=519f66cdcfad384b9ca42557469ee165&type=Server" target="_blank" rel="noopener">join server</a>
-      <span class="s-status"></span>
-    </div>
 
-    <div class="server" data-status="up">
-      <div class="s-alias">
-        <b>nathan</b>
-        <a href="https://www.roblox.com/users/5491917497/profile" target="_blank" rel="noopener">@runtlmee</a>
-      </div>
-      <a class="s-link" href="https://www.roblox.com/share?code=d9a814872cfb11488785097e7c80a350&type=Server" target="_blank" rel="noopener">join server</a>
-      <span class="s-status"></span>
-    </div>
+      <h1 id="username" class="username"></h1>
 
-    <div class="server" data-status="up">
-      <div class="s-alias">
-        <b>kasia</b>
-        <a href="https://www.roblox.com/users/2393203222/profile" target="_blank" rel="noopener">@77vynx</a>
-      </div>
-      <a class="s-link" href="https://www.roblox.com/share?code=3e474d8f1e4e864bb51b4896e375f908&type=Server" target="_blank" rel="noopener">join server</a>
-      <span class="s-status"></span>
-    </div>
+      <div class="divider"><span></span><i>&#10022;</i><span></span></div>
 
-  </div>
+      <blockquote class="quote">
+        <span class="q-mark left">&ldquo;</span>
+        <span id="quote" class="quote-text"></span>
+        <span class="q-mark right">&rdquo;</span>
+      </blockquote>
 
-  <p class="no-results" id="no-results">no servers match that search.</p>
+    </section>
+  </main>
 
-</section>
-
-<footer class="page-foot">
-  <p>urmad.lol</p>
-  <p class="tiny">ran by dia</p>
-</footer>
-
-<script>
-
-(function () {
-  var input = document.getElementById('server-search');
-  var list  = document.getElementById('server-list');
-  var empty = document.getElementById('no-results');
-  var count = document.getElementById('server-count');
-  if (!input || !list) return;
-
-
-  var STATUS_WORDS = {
-    up:   'working up online yes alive',
-    down: 'dead down offline no broken'
-  };
-
-  function haystack(row) {
-    var link = row.querySelector('.s-link');
-    return (
-      row.textContent + ' ' +
-      (link ? link.getAttribute('href') : '') + ' ' +
-      (STATUS_WORDS[row.dataset.status] || 'unknown')
-    ).toLowerCase();
-  }
-
-  function filter() {
-    var terms = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    var rows  = list.querySelectorAll('.server');
-                                                       
-    var shown = 0;
-
-    for (var i = 0; i < rows.length; i++) {
-      var hay = haystack(rows[i]);
-      var match = terms.every(function (t) { return hay.indexOf(t) !== -1; });
-      rows[i].classList.toggle('is-hidden', !match);
-      if (match) shown++;
-    }
-
-    empty.classList.toggle('show', shown === 0);
-    count.textContent = shown + (shown === 1 ? ' server' : ' servers') +
-                        (terms.length ? ' found' : '');
-  }
-
-  input.addEventListener('input', filter);
-  input.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { input.value = ''; filter(); }
-  });
-
-  new MutationObserver(filter).observe(list, { childList: true });
-
-  filter();
-})();
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
