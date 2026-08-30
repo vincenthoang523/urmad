@@ -39,7 +39,6 @@ const DEFAULT_PFP =
   );
 
 const $ = (id) => document.getElementById(id);
-const gate = $('gate');
 const stage = $('stage');
 
 /* ---------- accent ---------- */
@@ -88,15 +87,15 @@ function typeQuote(text) {
   }, 38);
 }
 
-/* ---------- enter gate ---------- */
-function enter() {
-  if (gate.classList.contains('hidden')) return;
-  gate.classList.add('hidden');
+/* ---------- reveal ---------- */
+let revealed = false;
+function reveal() {
+  if (revealed) return;
+  revealed = true;
+  void stage.offsetWidth; // flush styles so the transition actually plays
   stage.classList.add('show');
-  setTimeout(() => typeQuote(CONFIG.quote), 450);
+  setTimeout(() => typeQuote(CONFIG.quote), 900);
 }
-gate.addEventListener('click', enter);
-document.addEventListener('keydown', enter);
 
 /* ---------- ember particles ---------- */
 const canvas = $('embers');
@@ -161,3 +160,8 @@ sizeCanvas();
 seed();
 if (!reduced) loop();
 render();
+
+// Fade in once fonts/images have settled — with a fallback so a slow
+// remote pfp can never leave the page stuck invisible.
+addEventListener('load', () => setTimeout(reveal, 120));
+setTimeout(reveal, 2500);
