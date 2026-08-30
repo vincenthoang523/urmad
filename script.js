@@ -6,25 +6,20 @@
 
 const CONFIG = {
   // Your name, shown big at the top.
-  name: 'your name',
+  name: 'diamonds',
 
   // Your quote. It types itself out letter by letter.
-  quote: 'the quieter you become, the more you are able to hear.',
+  quote: 'So kinzer was addicted to last stomps, on october, he performed the final satanic ritual to free his soul, thus slowly dissipating as jailbreak went on.',
 
   // Your profile picture. Either:
   //   • drop an image next to this file and put its filename here  ->  'me.jpg'
   //   • or paste a direct image link                               ->  'https://…/pic.png'
   //   • leave as null for the built-in placeholder
-  pfp: null,
+  pfp: abdiware.webp,
 
   // Red accent used across the page. Try '#8b0000', '#e01e37', '#a4161a', '#6a040f'.
   accent: '#c1121f'
 };
-
-/* =========================================================
-   Below here is just the machinery.
-   ========================================================= */
-
 const DEFAULT_PFP =
   'data:image/svg+xml;utf8,' +
   encodeURIComponent(
